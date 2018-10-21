@@ -1,0 +1,13 @@
+_*
+*.swp
+*.o
+*.out
+*.key
+*.diff
+*.patch
+tags
+libspeck.a
+libsupp.a
+specktest
+speckcrypt
+speckblktst

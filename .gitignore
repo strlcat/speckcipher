@@ -11,3 +11,4 @@ libsupp.a
 specktest
 speckcrypt
 speckblktst
+speckkey

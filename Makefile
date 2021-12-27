@@ -1,4 +1,4 @@
-PROGS = specktest speckcrypt speckblktst
+PROGS = specktest speckcrypt speckblktst speckkey
 SUPPORT = mhexdump.c xstrlcpy.c
 PROGSRCS = $(PROGS:=.c)
 PROGOBJS = $(PROGSRCS:.c=.o)

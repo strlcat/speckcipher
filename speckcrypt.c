@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 {
 	int ifd, ofd;
 	char *kfname, *infname, *onfname;
-	size_t lio, lrem, ldone, lblock, z, n, x, *sx, *dx;
+	size_t lio, lrem, ldone, lblock;
 	char *pblk;
 
 	if (argc < 4) usage();
@@ -64,11 +64,6 @@ int main(int argc, char **argv)
 
 	specke_init(&specke, key);
 	will_exit = 0;
-	switch (sizeof(size_t)) {
-		case 2: n = 1; break;
-		case 4: n = 2; break;
-		case 8: n = 3; break;
-	}
 	while (1) {
 		if (will_exit) break;
 		pblk = srcblk;
@@ -84,10 +79,7 @@ _ragain:	lio = read(ifd, pblk, lrem);
 			goto _ragain;
 		}
 
-		specke_emit(dstblk, ldone, &specke);
-		sx = (size_t *)srcblk; dx = (size_t *)dstblk;
-		for (z = 0; z < (ldone >> n); z++) dx[z] ^= sx[z];
-		if (ldone - (z << n)) for (x = (z << n); x < ldone; x++) dstblk[x] ^= srcblk[x];
+		speck_stream_crypt(&specke, dstblk, srcblk, ldone);
 
 		pblk = dstblk;
 		lrem = ldone;

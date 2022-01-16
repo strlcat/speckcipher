@@ -68,8 +68,14 @@ static inline void data_to_words(void *p, size_t l)
 #endif
 }
 
+struct specke_stream;
+
+#define speck_convkey(k) do { data_to_words(k, SPECK_KEY_SIZE); } while (0)
+
 void speck_encrypt_rawblk(SPECK_UNIT_TYPE *O, const SPECK_UNIT_TYPE *I, const SPECK_UNIT_TYPE *K);
 
 void speck_encrypt_block(const void *key, void *out, const void *in);
+
+void speck_stream_crypt(struct specke_stream *specke, void *out, const void *in, size_t sz);
 
 #endif

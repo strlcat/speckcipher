@@ -1,6 +1,10 @@
 #ifndef _SPECK_CIPHER_DEFINITIONS_HEADER
 #define _SPECK_CIPHER_DEFINITIONS_HEADER
 
+#ifndef _DEFAULT_SOURCE
+#define _DEFAULT_SOURCE
+#endif
+
 #ifndef _BSD_SOURCE
 #define _BSD_SOURCE
 #endif

@@ -6,7 +6,6 @@ void specke_init_iv(struct specke_stream *specke, const void *key, const void *i
 {
 	memset(specke, 0, sizeof(struct specke_stream));
 	memcpy(specke->key, key, SPECK_KEY_SIZE);
-	data_to_words(specke->key, SPECK_KEY_SIZE);
 	if (iv) memcpy(specke->iv, iv, SPECK_BLOCK_SIZE);
 	specke->tidx = 0;
 }
